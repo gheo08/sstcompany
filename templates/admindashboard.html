@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admindashboard.css') }}">
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+        <header class="admin-header">
+            <h1>ADMIN DASHBOARD</h1>
+            <nav>
+                <ul>
+                    <li><a href="/logout" class="logout-btn">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="admin-main">
+
+        <!-- ===== ACTION CARDS ===== -->
+        <div class="admin-actions">
+            <div class="card" id="manage-products">
+                <h3>Manage Products</h3>
+                <p>Edit product details and increment stock.</p>
+                <a href="/admin/manage-products" class="action-btn">Go</a>
+            </div>
+
+            <div class="card" id="manage-users">
+                <h3>Manage Users</h3>
+                <p>View all registered users.</p>
+                <a href="/admin/manage-users" class="action-btn">Go</a>
+            </div>
+
+            <div class="card" id="orders">
+                <h3>Orders</h3>
+                <p>View pending and completed orders.</p>
+                <a href="/admin/orders" class="action-btn">Go</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('function_static', filename='admindashboard.js') }}" defer></script>
+</body>
+</html>

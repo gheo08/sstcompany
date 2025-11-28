@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin – Manage Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_products.css') }}">
+    <script src="{{ url_for('function_static', filename='admin_products.js') }}" defer></script>
+</head>
+<body>
+
+<header class="admin-header">
+    <a href="/admindashboard" class="back-btn">← Back</a>
+    <h1 class="title">PRODUCT STOCK MANAGER</h1>
+    <div class="header-right">
+        <a class="add-btn-header" href="/admin/add-product">+ Add Product</a>
+        <a class="logout-btn" href="/logout">Logout</a>
+    </div>
+</header>
+
+<div class="admin-container">
+    <!-- ================= Sidebar ================= -->
+    <aside class="filter-sidebar">
+        <h3>Filter Products</h3>
+        <div id="category-container">
+            <!-- JS populates categories, subcategories, brands -->
+        </div>
+    </aside>
+
+    <!-- ================= Main Content ================= -->
+    <main class="main-content">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search product by name...">
+            <button id="clearSearchBtn">Clear</button>
+        </div>
+
+        <table class="products-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Category</th>
+                    <th>Subcategory</th>
+                    <th>Current Stock</th>
+                    <th>Add Stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="productsBody">
+                {% for p in products %}
+                <tr data-id="{{ p['id'] }}" data-category="{{ p['category'] }}" data-subcategory="{{ p['subcategory'] }}" data-brand="{{ p['brand'] }}">
+                    <td>{{ p['id'] }}</td>
+                    <td class="product-name">{{ p['name'] }}</td>
+                    <td>{{ p['brand'] }}</td>
+                    <td>{{ p['category'] }}</td>
+                    <td>{{ p['subcategory'] }}</td>
+                    <td class="stock">{{ p['stock'] }}</td>
+                    <td><input type="number" class="add-input" min="1" value="1"></td>
+                    <td>
+                        <button class="add-btn">Add</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo" id="dashboardLogo">USER DASHBOARD</div>
+
+      <!-- 🔍 SEARCH -->
+      <form action="{{ url_for('dashboard') }}" method="get" class="search-bar">
+        <input type="text" id="searchInput" name="search" placeholder="Search product..." value="{{ request.args.get('search', '') }}">
+        <button id="searchBtn" type="button">Search</button>
+        <button id="clearSearchBtn" type="button">Clear Search</button>
+      </form>
+
+      <!-- 🧭 CATEGORY FILTERS -->
+      <div class="category-buttons">
+        <button id="allBtn" class="filter-btn">All</button>
+        <button id="phoneBtn" class="filter-btn">Phone</button>
+        <button id="tabletBtn" class="filter-btn">Tablet</button>
+        <button id="laptopBtn" class="filter-btn">Laptop</button>
+      </div>
+
+      <!-- ALL BRANDS (merged for "All" category) -->
+    <div id="allBrands" class="brand-section" style="display: none;">
+      <h4>All Brands</h4>
+    </div>
+
+
+      <!-- 👤 USER AREA -->
+        <div class="header-right">
+          {% if user_email %}
+            <div class="user-email-container">
+              <span class="user-email">{{ user_email }}</span>
+              <button id="changePassBtn">Change Password</button>
+            </div>
+            <button id="historyBtn" class="history-btn">🕓 History</button>
+            <button id="openCartBtn">🛒 Cart</button>
+            <button class="logout-btn" onclick="showLogoutPopup()">Logout</button>
+          {% else %}
+            <button onclick="window.location.href='/login'">Sign In</button>
+          {% endif %}
+        </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- 🧩 SIDEBAR FILTER -->
+    <!-- 🧩 SIDEBAR FILTER -->
+    <aside class="sidebar">
+      <h3>Filter by Category</h3>
+      <div id="categoryContainer" class="category-buttons"></div>  <!-- ADD THIS -->
+      <h3>Filter by Brand</h3>
+      <button id="clearFiltersBtn" class="clear-btn">Clear Filters</button>
+
+      <!-- SINGLE BRAND CONTAINER -->
+      <div id="brandContainer" class="brand-section"></div>
+    </aside>
+
+
+
+
+    <!-- 🛍️ PRODUCT LIST -->
+    <div class="products-container">
+      {% for product in products %}
+      
+      <div class="product-card">
+      <img src="{{ url_for('static', filename='images/' + (product.image.split('/')[-1] if product.image else 'default.png')) }}" class="product-img">
+
+
+        <h3>{{ product['name'] }}</h3>
+        <p>Category: {{ product['category'] }}</p>
+        <p>Price: ₱{{ product['price'] }}</p>
+        <p>Stock: {{ product['stock'] }}</p>
+
+        <div class="button-group">
+          <button class="view-btn"
+              data-name="{{ product.name }}"
+              data-category="{{ product.category }}"
+              data-price="{{ product.price }}"
+              data-stock="{{ product.stock }}"
+              data-description="{{ product.description or 'No description available.' }}"
+              data-image="{{ product.image or 'default.png' }}">
+              View
+          </button>
+          <button class="add-to-cart" data-id="{{ product.id }}">Add to Cart</button>
+          <button class="buy-btn" data-id="{{ product.id }}">Buy</button>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+
+  </main>
+
+  <!-- 🚪 LOGOUT MODAL -->
+  <div id="logoutModal" class="logout-modal hidden">
+    <div class="logout-modal-content">
+      <p>Are you sure you want to logout?</p>
+      <div class="logout-buttons">
+        <button id="logoutBtn" class="logout-confirm">Logout</button>
+        <button id="stayBtn" class="logout-cancel">Stay Logged In</button>
+        <button id="switchBtn" class="logout-switch">Use Another Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🧠 PRODUCT DATA -->
+  <script id="product-data" type="application/json">
+    {{ products | tojson | safe }}
+  </script>
+
+  <!-- 🔍 PRODUCT VIEW POPUP -->
+  <!-- 🔍 PRODUCT VIEW POPUP -->
+  <div id="productModal" class="product-modal hidden">
+    <div class="product-modal-content">
+      <span id="closeProductModal" class="close-modal">&times;</span>
+      
+      <div class="modal-body">
+
+        <!-- LEFT IMAGE -->
+        <div class="modal-left">
+          <img id="modalProductImage" src="" alt="Product Image">
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="modal-right">
+          <h2 id="modalProductName"></h2>
+
+          <!-- CATEGORY + PRICE -->
+          <p class="modal-line">
+            <strong>Category:</strong> <span id="modalProductCategory"></span>
+          </p>
+          <p class="modal-line">
+            <strong>Price:</strong> ₱<span id="modalProductPrice"></span>
+          </p>
+
+          <!-- CLEAN DESCRIPTION -->
+          <div class="modal-description">
+            <p id="modalProductDescription"></p>
+          </div>
+
+          <!-- ORGANIZED SPECS -->
+          <div class="spec-section">
+            <h3>Specifications</h3>
+            <div id="modalSpecsFormatted" class="spec-grid"></div>
+          </div>
+
+          <!-- BUTTONS -->
+          <div class="modal-button-group">
+            <button id="modalAddToCartBtn">Add to Cart</button>
+            <button id="modalBuyBtn">Buy</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('function_static', filename='dashboard.js') }}" defer></script>
+</body>
+
+</html>

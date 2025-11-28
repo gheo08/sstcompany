@@ -1,0 +1,526 @@
+/* ========================================
+   GLOBAL LAYOUT + BACKGROUND
+======================================== */
+body {
+    background-image: url("/static/images/bg.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #fff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    cursor: default;
+}
+
+/* ========================================
+   HEADER (DARK GLASS NEON)
+======================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 0, 150, 0.3);
+}
+
+header .container {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* SEARCH BAR */
+.search-bar {
+    display: flex;
+    gap: 8px;
+}
+
+.search-bar input {
+    padding: 7px 10px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.search-bar button {
+    padding: 7px 14px;
+    background: #8e44ad;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+/* CATEGORY BUTTONS */
+.category-buttons .filter-btn {
+    padding: 7px 12px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border-radius: 6px;
+    margin-left: 5px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 0, 180, 0.3);
+    transition: 0.25s;
+}
+
+.category-buttons .filter-btn:hover {
+    background: rgba(255, 0, 180, 0.4);
+}
+
+/* HEADER RIGHT */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right button {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255, 0, 180, 0.4);
+}
+
+.logout-btn {
+    background: rgba(255, 0, 0, 0.6);
+}
+
+/* ========================================
+   MAIN LAYOUT
+======================================== */
+.main-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* ========================================
+   SIDEBAR (GLASS NEON)
+======================================== */
+.sidebar {
+    width: 230px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 0, 180, 0.25);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: default;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 0, 180, 0.4);
+    padding-bottom: 5px;
+}
+
+.sidebar h4 {
+    margin-top: 15px;
+    color: #ddd;
+}
+
+.brand-section {
+    margin-top: 8px;
+}
+
+.brand-section label {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+    cursor: pointer;
+    user-select: none;
+    gap: 6px;
+}
+
+.brand-section input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* CLEAR FILTERS BUTTON */
+.clear-btn {
+    width: 100%;
+    padding: 7px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 10px;
+    transition: 0.2s;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 0, 180, 0.3);
+}
+
+/* ========================================
+   PRODUCT GRID
+======================================== */
+.products-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+/* ========================================
+   PRODUCT CARD (DARK GLASS + NEON OUTLINE)
+======================================== */
+.product-card {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 150, 0.4);
+    backdrop-filter: blur(12px);
+    transition: 0.25s;
+    cursor: default;
+}
+
+.product-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #222;
+    width: 400px;
+    padding: 20px;
+    margin: 8% auto;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.modal-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 25px;
+    color: red;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 0, 150, 0.7);
+    box-shadow: 0 0 12px rgba(255, 0, 200, 0.5);
+}
+
+.product-card h3, .product-card p {
+    margin: 3px 0;
+}
+
+.product-card h3 {
+    color: #fff;
+    font-size: 1.05rem;
+}
+
+/* BUTTONS */
+.button-group {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-cart,
+.buy-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.add-to-cart {
+    background: #16a085;
+}
+
+.add-to-cart:hover {
+    filter: brightness(1.2);
+}
+
+.buy-btn {
+    background: #e67e22;
+}
+
+.buy-btn:hover {
+    filter: brightness(1.2);
+}
+
+/* ========================================
+   RESPONSIVE GRID
+======================================== */
+@media (max-width: 1400px) {
+    .products-container { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 1100px) {
+    .products-container { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+    .main-container { flex-direction: column; }
+    .sidebar { width: 100%; margin-bottom: 20px; }
+}
+@media (max-width: 700px) {
+    .products-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .products-container { grid-template-columns: 1fr; }
+}
+
+/* ========================================
+   LOGOUT MODAL
+======================================== */
+.logout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.logout-modal.hidden { display: none; }
+
+.logout-modal-content {
+    background: rgba(0,0,0,0.85);
+    padding: 25px 30px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(255, 0, 150, 0.5);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 15px rgba(255, 0, 180, 0.5);
+    min-width: 280px;
+}
+
+.logout-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.logout-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.2s;
+}
+
+.logout-confirm { background: #e74c3c; }
+.logout-cancel { background: #3498db; }
+.logout-switch { background: #9b59b6; }
+
+.logout-buttons button:hover { filter: brightness(1.2); }
+
+/* ========================================
+   USER EMAIL HOVER POPUP
+======================================== */
+.user-email-container { position: relative; display: inline-block; }
+
+#changePassBtn {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    background: linear-gradient(90deg, #a000ff, #d400ff);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(180,0,255,0.5);
+    transition: 0.2s;
+}
+
+.user-email-container:hover #changePassBtn { display: block; }
+
+/* ========================================
+   PRODUCT MODAL POPUP
+======================================== */
+.product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 10px; /* small padding for mobile */
+}
+
+.product-modal.hidden {
+    display: none;
+}
+
+/* ================== PRODUCT MODAL ================== */
+.product-modal-content {
+    background: #1b0030;
+    padding: 25px;
+    width: 750px;      /* Maximize width */
+    max-width: 95%;    /* Responsive */
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(255, 0, 180, 0.5);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(255, 0, 180, 0.6);
+}
+
+/* MODAL BODY: LEFT IMAGE + RIGHT DETAILS */
+.modal-body {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: wrap; /* responsive for small screens */
+}
+
+.modal-left img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 0, 180, 0.3);
+    box-shadow: 0 0 15px rgba(255, 0, 200, 0.5);
+}
+
+.modal-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+/* SPECIFICATIONS SECTION */
+.spec-grid {
+    display: grid;
+    grid-template-columns: 160px auto; /* wider label column */
+    gap: 10px 18px;
+    margin-top: 10px;
+}
+
+.spec-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.spec-label {
+    font-weight: bold;
+    color: #ff99ff;
+    font-size: 0.95rem;
+}
+
+.spec-value {
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+/* MODAL BUTTONS */
+.modal-button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-button-group button {
+    padding: 10px 18px;
+    background: #ff66ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-button-group button:hover {
+    background: #e055e0;
+}
+
+/* CLOSE BUTTON */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff4d4d;
+}
+
+.close-modal:hover {
+    color: #ff3b3b;
+}
+
+/* RESPONSIVE MODAL */
+@media (max-width: 900px) {
+    .modal-body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal-left img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .spec-grid {
+        grid-template-columns: 140px auto;
+        gap: 8px 14px;
+    }
+}

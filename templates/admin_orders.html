@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_order.css') }}">
+</head>
+<body>
+    <header class="admin-header">
+        <a href="/admindashboard" class="back-btn">← Back</a>
+        <h1>Orders</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin_completeorder">History Order</a></li>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section class="welcome">
+            <h2>Order List</h2>
+            <p>View all pending orders grouped by date.</p>
+
+            <!-- Search & filter -->
+            <input type="text" id="order-search" placeholder="Search by email">
+            <input type="date" id="start-date">
+            <input type="date" id="end-date">
+            <button id="filter-date-btn">Filter</button>
+            <button id="clear-filter" class="filter-btn clear">Clear</button>
+
+            <!-- Orders container -->
+            <div id="orders-container"></div>
+    </main>
+
+    <script src="{{ url_for('function_static', filename='admin_orders.js') }}" defer></script>
+</body>
+</html>

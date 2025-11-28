@@ -1,0 +1,222 @@
+/* ==== GLOBAL BACKGROUND ==== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/images/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+/* ==== FORM CONTAINER ==== */
+.updateform {
+    width: 40%;
+    margin: 80px auto;
+    padding: 40px 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    text-align: center;
+    box-shadow: 0 0 25px rgba(180, 0, 255, 0.4);
+}
+
+/* ==== HEADER ==== */
+.updateform h1 {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 10px #c200ff;
+}
+
+/* ==== LABELS ==== */
+.updateform label {
+    font-size: 20px;
+    font-weight: 600;
+    display: block;
+    margin: 15px 0 5px;
+    color: #fff;
+}
+
+/* ==== INPUT FIELDS ==== */
+.updateform input {
+    width: 76.5%;
+    padding: 12px;
+    font-size: 18px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+
+    outline: none;
+    transition: 0.2s;
+}
+
+.updateform input:focus {
+    border: 1px solid #bb00ff;
+    box-shadow: 0 0 10px #bb00ff;
+}
+
+/* ==== BUTTON ==== */
+.updateform button {
+    width: 60%;
+    margin-top: 25px;
+    padding: 12px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, #a000ff, #d400ff);
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 10px #b200ff;
+}
+
+.updateform button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #d200ff;
+}
+
+/* ==== MESSAGE ==== */
+#message {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #ff8080;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+    .updateform {
+        width: 85%;
+        padding: 25px;
+    }
+
+    .updateform h1 {
+        font-size: 35px;
+    }
+
+    .updateform input {
+        font-size: 16px;
+    }
+
+    .updateform button {
+        width: 75%;
+        font-size: 18px;
+    }
+}
+
+/* ==== POPUP MODAL ==== */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: rgba(0,0,0,0.85);
+    padding: 35px 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid rgba(255, 0, 180, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(255, 0, 200, 0.5);
+    max-width: 400px;
+}
+
+.popup-content h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #80ff80;
+}
+
+.popup-content p {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #ddd;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.popup-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#signinAgainBtn {
+    background: #e74c3c;
+    color: #fff;
+}
+
+#signinAgainBtn:hover {
+    filter: brightness(1.2);
+}
+
+#dashboardBtn {
+    background: #3498db;
+    color: #fff;
+}
+
+#dashboardBtn:hover {
+    filter: brightness(1.2);
+}
+
+/* Make password wrapper aligned like email */
+.password-wrapper {
+    position: relative;
+    width: 80%;
+    margin: 15px auto 0;  /* adds spacing similar to label spacing */
+    display: flex;
+    align-items: center;
+}
+
+/* Make input take full width minus eye icon */
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px; /* space for eye icon */
+}
+
+/* Eye icon inside input */
+.eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

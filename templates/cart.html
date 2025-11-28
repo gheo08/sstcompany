@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Cart</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='cart.css') }}">
+</head>
+<body>
+  <div class="cart-container">
+    <h2>My Shopping Cart</h2>
+    <div id="cartItems"></div>
+    <p id="cartTotal">Total: ₱0.00</p>
+
+    <div class="cart-actions">
+      <button id="backBtn">⬅ Back to Dashboard</button>
+      <button id="checkoutBtn">✅ Checkout</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('function_static', filename='cart.js') }}" defer></script>
+</body>
+</html>

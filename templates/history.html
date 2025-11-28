@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Purchase History</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}">
+  <script src="{{ url_for('function_static', filename='history.js') }}" defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="history-header">
+    <button id="backLink" class="back-btn">← Back to Dashboard</button>
+    <h2>Purchase History</h2>
+  </header>
+
+  {% if orders %}
+    {% set grouped_orders = {} %}
+
+    {# Group by checkout date #}
+    {% for order in orders %}
+      {% set key = order['order_date'] %}
+      {% if key not in grouped_orders %}
+        {% set _ = grouped_orders.update({key: []}) %}
+      {% endif %}
+      {% set _ = grouped_orders[key].append(order) %}
+    {% endfor %}
+
+    {# Sort by most recent #}
+    {% for checkout_time, orders_in_group in grouped_orders|dictsort(reverse=True) %}
+      <div class="checkout-group">
+        <h3 class="date-header">Checkout: {{ checkout_time }}</h3>
+
+        <div class="table-container">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% set ns = namespace(overall_total=0) %}
+              {% for order in orders_in_group %}
+                <tr>
+                  <td>{{ order['name'] }}</td>
+                  <td>{{ order['quantity'] }}</td>
+                  <td>₱{{ '%.2f' % (order['total_price'] | float) }}</td>
+                  <td>{{ order['status'] }}</td>
+                </tr>
+                {% set ns.overall_total = ns.overall_total + (order['total_price'] | float) %}
+              {% endfor %}
+            </tbody>
+
+            <tfoot>
+              <tr class="overall-total-row">
+                <td colspan="2"></td>
+                <td colspan="2" class="overall-total">
+                  <strong>Overall Total: ₱{{ '%.2f' % ns.overall_total }}</strong>
+                </td>
+              </tr>
+            </tfoot>
+
+          </table>
+        </div>
+
+        <a href="{{ url_for('view_receipt', order_id=orders_in_group[0]['order_id']) }}">
+          <button class="receipt-btn">🧾 View Receipt</button>
+        </a>
+        <hr>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No purchase history yet.</p>
+  {% endif %}
+</body>
+</html>

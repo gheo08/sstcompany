@@ -1,0 +1,127 @@
+/* === BACKGROUND === */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  background-image: url("/static/images/bg.png");
+  background-size: cover;
+  background-attachment: fixed;
+
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.6s ease-in;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+/* === Header === */
+.history-header {
+  position: sticky;       /* makes it stick to top */
+  top: 0;                 /* stick at top of viewport */
+  z-index: 1000;          /* stay above other content */
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 0 12px rgba(150, 0, 255, 0.3);
+}
+
+
+.history-header h2 {
+  margin: 0;
+  font-size: 1.6em;
+  flex: 1;
+  text-align: center;
+
+  color: #e8caff;
+  text-shadow: 0 0 6px #c200ff;
+}
+
+.back-btn {
+  padding: 8px 14px;
+  background-color: #9b59b6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-btn:hover {
+  background-color: #8e44ad;
+}
+
+/* === Date Header === */
+.date-header {
+  margin-top: 25px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #e3b7ff;
+}
+
+/* === Table === */
+.table-container {
+  overflow-x: auto;
+}
+
+.history-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+
+  backdrop-filter: blur(10px);
+}
+
+.history-table th,
+.history-table td {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.history-table th {
+  background: rgba(170, 0, 255, 0.25);
+  color: #fff;
+  font-weight: bold;
+}
+
+.history-table tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Receipt button */
+.receipt-btn {
+  background: #a000ff;
+  padding: 7px 15px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+.receipt-btn:hover {
+  background: #d400ff;
+}
+
+/* Total Row */
+.overall-total {
+  text-align: right;
+  font-weight: bold;
+  padding: 8px;
+  color: #8dfc9b;
+}

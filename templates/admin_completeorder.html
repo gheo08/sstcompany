@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Completed Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_completeorders.css') }}">
+    <script src="{{ url_for('function_static', filename='admin_completeorders.js') }}" defer></script>
+</head>
+<body>
+
+<header class="admin-header">
+    <!-- Back button uses url_for directly in href -->
+    <a href="{{ url_for('admin_orders') }}" class="back-btn">← Back</a>
+    <h1>Completed Orders</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('logout') }}" class="logout-btn">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="admin-main">
+        <section class="welcome">
+            <h2>History of Completed Orders</h2>
+
+            <div class="filter-row">
+                <input type="text" id="complete-search" placeholder="Search Email..." class="search-bar">
+
+                <input type="date" id="filter-start" class="date-filter">
+                <input type="date" id="filter-end" class="date-filter">
+
+                <button id="apply-filter" class="filter-btn">Filter</button>
+                <button id="clear-filter" class="filter-btn clear">Clear</button>
+            </div>
+        </section>
+
+
+    <div id="orders-container">
+        <!-- Completed orders will be loaded here -->
+    </div>
+</main>
+
+
+</body>
+</html>

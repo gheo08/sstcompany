@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_newproducts.css') }}">
+    <script src="{{ url_for('function_static', filename='admin_newproducts.js') }}" defer></script>
+</head>
+<body>
+    <!-- ===== FIXED HEADER ===== -->
+    <header class="admin-header">
+        <button class="back-btn" onclick="window.location.href='/admin/manage-products'">← Back</button>
+        <h1>Add New Product</h1>
+        <!-- Optional right-side buttons -->
+        <div class="header-right">
+            <!-- Example: logout/add buttons -->
+            <!-- <button class="logout-btn">Logout</button> -->
+            <!-- <button class="add-btn-header">Add</button> -->
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="admin-main">
+        <form id="newProductForm" action="{{ url_for('admin_newproducts') }}" method="POST" enctype="multipart/form-data">
+            <label for="name">Product Name:</label>
+            <input type="text" name="name" id="name" required>
+			<label for="brand">Brand:</label>
+			<select name="brand" id="brand" required>
+				<option value="" disabled selected hidden>Select Brand</option>
+				<option value="Acer">Acer</option>
+				<option value="Asus">Asus</option>
+				<option value="Apple">Apple</option>
+				<option value="Dell">Dell</option>
+				<option value="Google">Google</option>
+				<option value="HP">HP</option>
+				<option value="Huawei">Huawei</option>
+				<option value="Lenovo">Lenovo</option>
+				<option value="Realme">Realme</option>
+				<option value="Samsung">Samsung</option>
+				<option value="Xiaomi">Xiaomi</option>
+			</select>
+
+			<label for="category">Category:</label>
+			<select name="category" id="category" required>
+				<option value="" disabled selected hidden>Select Category</option>
+				<option value="Phone">Phone</option>
+				<option value="Laptop">Laptop</option>
+				<option value="Tablet">Tablet</option>
+			</select>
+
+
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price" step="0.01" required>
+
+            <label for="stock">Stock:</label>
+            <input type="number" name="stock" id="stock" required>
+
+            <label for="description">Description / Specs:</label>
+            <textarea name="description" id="description" rows="10" required>
+Processor: 
+RAM: 
+Storage: 
+Display: 
+Battery: 
+OS: 
+Other Features: 
+            </textarea>
+
+            <label for="image">Product Image:</label>
+            <input type="file" name="image" id="image" accept="image/*" required>
+
+            <div id="imagePreviewContainer">
+                <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width:200px; margin-top:10px;"/>
+            </div>
+
+            <button type="submit">Add Product</button>
+        </form>
+    </main>
+
+    <!-- ===== IMAGE PREVIEW SCRIPT ===== -->
+    <script>
+        const imageInput = document.getElementById('image');
+        const imagePreview = document.getElementById('imagePreview');
+
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = "block";
+                }
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = "#";
+                imagePreview.style.display = "none";
+            }
+        });
+
+        document.getElementById('newProductForm').addEventListener('submit', function(e){
+            if (!imageInput.files[0]) {
+                alert("Please select an image.");
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

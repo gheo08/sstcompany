@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Receipt</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='receipt.css') }}">
+  <script src="{{ url_for('function_static', filename='receipt.js') }}" defer></script>
+</head>
+<body>
+  <div class="receipt-container">
+    <h2>Purchase Receipt</h2>
+
+    {% if orders %}
+      <p><strong>Order Date:</strong> {{ orders[0].order_date }}</p>
+
+      <table class="receipt-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% set ns = namespace(total=0) %}
+          {% for order in orders %}
+          <tr>
+            <td>{{ order.product_name }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>₱{{ '%.2f' % (order.total_price | float) }}</td>
+          </tr>
+          {% set ns.total = ns.total + (order.total_price | float) %}
+          {% endfor %}
+          <tr>
+            <td colspan="2" style="text-align:right; font-weight:bold;">Overall Total:</td>
+            <td style="font-weight:bold; color:#2e7d32;">₱{{ '%.2f' % ns.total }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Status:</strong> {{ orders[0].status }}</p>
+
+      <div class="btn-group">
+        <button id="printBtn" class="print-btn">🖨️ Print Receipt</button>
+        <button id="backBtn" class="back-btn">← Back to Purchase History</button>
+      </div>
+    {% else %}
+      <p>No orders found for this receipt.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

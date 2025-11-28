@@ -1,0 +1,176 @@
+/* ==== GLOBAL BACKGROUND ==== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/images/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+/* ==== FORM CONTAINER (Glass Panel) ==== */
+.loginform {
+    width: 40%;
+    margin: 80px auto;
+    padding: 40px 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    text-align: center;
+    box-shadow: 0 0 25px rgba(180, 0, 255, 0.4);
+}
+
+/* ==== HEADER ==== */
+.loginform h1 {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 10px #c200ff;
+}
+
+/* ==== LABELS ==== */
+.loginform label {
+    font-size: 20px;
+    font-weight: 600;
+    display: block;
+    margin: 15px 0 5px;
+    color: #fff;
+}
+
+/* ==== INPUT FIELDS ==== */
+.loginform input {
+    width: 77.5%;
+    padding: 12px;
+    font-size: 18px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+
+    outline: none;
+    transition: 0.2s;
+}
+
+.loginform input:focus {
+    border: 1px solid #bb00ff;
+    box-shadow: 0 0 10px #bb00ff;
+}
+
+/* ==== BUTTONS ==== */
+.loginform button {
+    width: 60%;
+    margin-top: 25px;
+    padding: 12px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, #a000ff, #d400ff);
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 10px #b200ff;
+}
+
+.loginform button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #d200ff;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+    .loginform {
+        width: 85%;
+        padding: 25px;
+    }
+
+    .loginform h1 {
+        font-size: 35px;
+    }
+
+    .loginform input {
+        font-size: 16px;
+    }
+
+    .loginform button {
+        width: 75%;
+        font-size: 18px;
+    }
+}
+
+/* Make password wrapper aligned like email */
+.password-wrapper {
+    position: relative;
+    width: 80%;
+    margin: 15px auto 0;  /* adds spacing similar to label spacing */
+    display: flex;
+    align-items: center;
+}
+
+/* Make input take full width minus eye icon */
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px; /* space for eye icon */
+}
+
+/* Eye icon inside input */
+.eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+
+
+/* Glow on hover */
+.eye-icon:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #d200ff);
+}
+
+.input-wrapper {
+    position: relative;
+    width: 80%;     /* SAME AS EMAIL FIELD */
+    margin: 0 auto; /* CENTERED */
+}
+
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 40px 12px 12px; /* space for eye icon */
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: transparent;
+    color: white;
+    font-size: 15px;
+}
+
+.toggle-eye {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: rgba(255,255,255,0.75);
+    font-size: 18px;
+}
+
+.toggle-eye:hover {
+    color: white;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <script src="{{ url_for('function_static', filename='login.js') }}" defer></script>
+</head>
+
+<body class="loginpage">
+    <div class="loginform">
+        <h1>Login</h1>
+
+        <form id="loginForm">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Input email" required>
+            <br><br>
+        
+            <label>Password:</label>
+
+            <div class="password-wrapper">
+                <input type="password" id="password" placeholder="Input password" required>
+
+                <svg id="togglePassword" class="eye-icon" viewBox="0 0 24 24">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" 
+                        stroke="white" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="12" r="3" fill="white"/>
+                </svg>
+            </div>
+
+
+            <br><br>
+                
+            <button type="submit" id="loginBtn">Login</button>
+            <button type="button" id="signupBtn">Sign up</button>
+        
+            <p id="message"></p>
+        </form>
+        
+
+    </div>
+</body>
+</html>

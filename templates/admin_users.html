@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Manage Users</title>
+    <!-- CSS from static folder -->
+  	<link rel="stylesheet" href="{{ url_for('static', filename='admin_users.css') }}">
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="admin-header">
+	    <a href="/admindashboard" class="back-btn">← Back</a>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="admin-main">
+        <section class="welcome">
+            <h2>Manage Users</h2>
+            <p>View all registered users in the system.</p>
+            <input type="text" id="user-search" class="search-bar" placeholder="Search Email...">
+
+        </section>
+
+        <!-- ===== USER TABLE ===== -->
+        <table class="admin-table" id="usersTable">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Email</th>
+					<th>Password</th>
+					<th>Role</th>
+					<th>Registered On</th>
+					<th>Action</th> <!-- New column -->
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Users will be dynamically inserted here -->
+			</tbody>
+		</table>
+
+    </main>
+<label for="role-filter">Filter by Role:</label>
+<select id="role-filter">
+    <option value="all">All</option>
+    <option value="admin">Admin</option>
+    <option value="user">User</option>
+</select>
+
+
+    <!-- JS from function folder -->
+    <script src="{{ url_for('function_static', filename='admin_users.js') }}" defer></script>
+</body>
+</html>

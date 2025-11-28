@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='updatepass.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='updatepass-popup.css') }}">
+</head>
+<body>
+    <div class="updateform">
+        <h1>Update Password</h1>
+
+        <form id="updatePassForm">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="{{ user_email }}" readonly>
+
+            <label for="currentPassword">Current Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="currentPassword" placeholder="Enter current password" required>
+                <svg id="toggleCurrentPassword" class="eye-icon" viewBox="0 0 24 24">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="white" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="3" fill="white"/>
+                </svg>
+            </div>
+
+            <label for="newPassword">New Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="newPassword" placeholder="Enter new password" required>
+                <svg id="toggleNewPassword" class="eye-icon" viewBox="0 0 24 24">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="white" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="3" fill="white"/>
+                </svg>
+            </div>
+
+
+            <button type="submit">Update Password</button>
+        </form>
+
+        <p id="message"></p>
+        <button type="button" id="backBtn">⬅ Back to Dashboard</button>
+    </div>
+
+    <!-- Success Popup Modal -->
+    <div id="successPopup" class="popup hidden">
+        <div class="popup-content">
+            <h2>Password Updated!</h2>
+            <p>Your password has been successfully changed.</p>
+            <div class="popup-buttons">
+                <button id="signinAgainBtn">Sign In Again</button>
+                <button id="dashboardBtn">Go to Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('function_static', filename='updatepass.js') }}" defer></script>
+</body>
+</html>
