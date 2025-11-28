@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
             row.innerHTML = `
                 <td>${user.id}</td>
                 <td>${user.email}</td>
-                <td>${user.password}</td>
                 <td>${user.role}</td>
                 <td>${user.registered_on}</td>
                 <td>

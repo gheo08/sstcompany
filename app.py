@@ -557,7 +557,7 @@ def manage_users():
 @app.route('/api/users')
 def api_users():
     conn = get_db_connection()
-    users = conn.execute("SELECT id, email, password, role, datetime(registered_on) as registered_on FROM users").fetchall()
+    users = conn.execute("SELECT id, email, role, datetime(registered_on) as registered_on FROM users").fetchall()
     conn.close()
     users_list = [dict(user) for user in users]
     return jsonify(users_list)
